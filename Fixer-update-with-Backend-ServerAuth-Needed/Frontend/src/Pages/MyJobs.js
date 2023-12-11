@@ -22,7 +22,14 @@ const MyJobs = () => {
     return ( 
         <>
               <div><Nbar/></div>
-            <h1>This is a list of all the jobs I have added</h1>
+           
+            
+            <br /> <br />
+              {user
+        ? <h2>My Jobs</h2>
+        : <h2>You must be logged in to view this page.
+            <br />
+            <a href="/login"><button className="btn bg-black btn-dark mt-3" >Log In</button></a></h2>}
             {jobs.length ? (
                 <ul>
                     {jobs.map (job => (
@@ -30,7 +37,8 @@ const MyJobs = () => {
                     ))}
                 </ul>
             ):(
-                <h2>You don't have jobs, click on link to add</h2>   
+                <h2>You don't have jobs, click on link to add</h2>  
+
             )}
         </>
      );
