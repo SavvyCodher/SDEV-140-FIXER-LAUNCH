@@ -1,6 +1,6 @@
 import './AddJob.css'
 import { useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Nbar from '../Pages/Nbar';
 import useUser from '../hooks/useUser';
 
@@ -18,15 +18,23 @@ const AddJob = () => {
   const [ZipCode, setZipCode] = useState('');
   const [error, setError] = useState('');
 
-    const {user, isLoading} = useUser();  //is the user logged in
+    //remove? const {user, isLoading} = useUser();  //is the user logged in
+    const {user} = useUser();  //is the user logged in
+    //const {user:{ uid:UserId }} = useUser();  //is the user logged in
+    //const {user} = useUser();  //is the user logged in
+    //console.log(user.uid)
 
       const navigate = useNavigate();  
         
       const SubmitJob = async (e) => {
         e.preventDefault()
         const NewJob = {
-          ServiceRequest, Desc, DatePosted, JobCategory, DateNeeded, TimeSlot, Email, City, ZipCode
+          ServiceRequest, Desc, DatePosted, JobCategory, DateNeeded, TimeSlot, Email, City, ZipCode, UserId:user.uid
         }
+        console.log(NewJob)
+        // const NewJob = {
+        //   ServiceRequest, Desc, DatePosted, JobCategory, DateNeeded, TimeSlot, Email, City, ZipCode, UserId:user.uid
+        // }
         try {
             const response = await fetch("http://localhost:3001/api/ads/", {
                 method: "POST",
@@ -37,6 +45,7 @@ const AddJob = () => {
             })
             if (response.ok) {
                 alert("Successful")
+                navigate("/myjobs")
             } else {
                 setError("Please fill out all fields")
             }
@@ -109,7 +118,7 @@ return(
         <h5 className="card-title">
         
         {user 
-      ? <button><a href="/myjobs" className="btn bg-black btn-dark mt-3" onClick={SubmitJob}>Post Job</a></button>
+      ? <a href="/AddJob" className="btn bg-black btn-dark mt-3" onClick={SubmitJob}>Post Job</a>
       : <button className="btn bg-black btn-dark mt-3" >Login to Post Jobs</button>} 
       </h5>
         </div>
