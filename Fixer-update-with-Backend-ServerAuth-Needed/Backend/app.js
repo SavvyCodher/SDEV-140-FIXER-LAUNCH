@@ -32,14 +32,19 @@ router.post("/user", async(req,res) =>{
       res.sendStatus(201) //created
    }
    catch(err){
+      console.log(err)
       res.status(400).send(err)
    }
 })
 
 // Get list of all ads in the database
 router.get("/ads", async(req,res) =>{
+   const UserId = req.query.uid
+   // filter for userid or no userid
+   const Filter = UserId ? { UserId } : {}
+   console.log(Filter)
    try{
-      const ads = await Ad.find({})
+      const ads = await Ad.find(Filter)
       res.send(ads)
       console.log(ads)
    }

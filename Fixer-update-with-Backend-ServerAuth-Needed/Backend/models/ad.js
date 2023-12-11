@@ -11,6 +11,7 @@ const Ad = db.model("Ad", {
    Email:  { type: String, required: true },
    City:  { type: String },
    ZipCode:  { type: String },
+   UserId:  { type: String },
 });
 
 module.exports = Ad;
