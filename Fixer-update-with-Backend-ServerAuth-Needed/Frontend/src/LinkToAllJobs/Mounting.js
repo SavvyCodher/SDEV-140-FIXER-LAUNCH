@@ -49,7 +49,7 @@ const Mounting = () => {
          <div className="card h-100" style={{width: 225}}>
          <img src="https://i.postimg.cc/mkNhQj6p/Designsby-Donnie-Donnie-Galli-FY22-Summer-Ceiling-Beam-Header2.jpg" className="card-img-top" alt="..." width="150px" height="150px"/>
          <div className="card-body border primary">
-         <h5 className="card-title">Beam Mounting/Installation</h5>
+         <h5 className="card-title">Beam Mounting</h5>
      </div> </div></div>
      <div className="col-sm col"> 
      <div className="card h-100" style={{width: 225}}>
