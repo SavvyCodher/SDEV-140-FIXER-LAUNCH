@@ -12,6 +12,9 @@ const Ad = db.model("Ad", {
    City:  { type: String },
    ZipCode:  { type: String },
    UserId:  { type: String },
+   Applicants: [String],
+   Accepted: { type: Boolean, default: false },
+   ApprovedApplicant:  { type: String }
 });
 
 module.exports = Ad;
