@@ -1,6 +1,7 @@
 import Nbar from './Nbar';
 import useUser from '../hooks/useUser';
 import { useState, useEffect } from 'react';
+import moment from 'moment';
 
 
 const MyJobs = () => {
@@ -31,11 +32,38 @@ const MyJobs = () => {
             <br />
             <a href="/login"><button className="btn bg-black btn-dark mt-3" >Log In</button></a></h2>}
             {jobs.length ? (
-                <ul>
+                <div className="card-group">
                     {jobs.map (job => (
-                        <li>{job.Desc}</li>
+
+                                    <div className="card text-center shadow m-2" key={job.UserId} >
+
+                                    <div className="card-body text-dark">
+
+
+                                            <h4 className="card-title">{job.ServiceRequest}</h4>
+
+                                            <p className="card-text text-secondary">
+                                                {job.Desc}
+                                            </p>
+
+                                            <p className="card-text text-secondary">
+                                           {moment(job.DateNeeded).format('MMM DD, YYYY')}
+
+                                            </p>
+                                            <p className="card-text text-secondary">
+                                            {job.ZipCode}
+                                            </p>
+
+                                    </div>
+                                    <div class="card-footer bg-transparent border-success">
+                                    <button>Apply</button>
+                                    </div>
+                                    </div>
                     ))}
-                </ul>
+                </div>
+
+
+                
             ):(
                 <h2>You don't have jobs, click on link to add</h2>  
 
