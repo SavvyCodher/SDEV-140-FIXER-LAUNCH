@@ -15,8 +15,11 @@ const AddJob = () => {
   const [TimeSlot, setTimeSlot] = useState('');
   const [Email, setEmail] = useState('');
   const [City, setCity] = useState('');
-  const [ZipCode, setZipCode] = useState('');
-  const [error, setError] = useState('');
+  const [ZipCode, setZipCode] = useState('');  
+  const [Applicants, setApplicants] = useState('');
+  const [Accepted, setAccepted] = useState(false);
+  const [ApprovedApplicant, setApprovedApplicant] = useState('');
+  const [error, setError] = useState(''); 
 
     //remove? const {user, isLoading} = useUser();  //is the user logged in
     const {user} = useUser();  //is the user logged in
@@ -29,7 +32,7 @@ const AddJob = () => {
       const SubmitJob = async (e) => {
         e.preventDefault()
         const NewJob = {
-          ServiceRequest, Desc, DatePosted, JobCategory, DateNeeded, TimeSlot, Email, City, ZipCode, UserId:user.uid
+          ServiceRequest, Desc, DatePosted, JobCategory, DateNeeded, TimeSlot, Email, City, ZipCode, UserId:user.uid, Applicants, Accepted, ApprovedApplicant
         }
         console.log(NewJob)
         // const NewJob = {
